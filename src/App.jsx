@@ -20,7 +20,7 @@ function App() {
     <div>
 
       <Routes>
-        <Route path="/rbac/login" element={<PageLogin />} />
+        <Route path="/login" element={<PageLogin />} />
         <Route path={basePath} element={<PrivateRoute><RouterConnection /></PrivateRoute>}>
           <Route index path={basePath + welcomePath} element={<Welcome />} />
           <Route path={basePath + usersPath} element={<UsersList />} />
