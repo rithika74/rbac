@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
+import { ApiCall } from "../../services/ApiCall";
 import { toast, ToastContainer } from 'react-toastify';
-import { useNavigate } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { ContextDatas } from "../../services/Context";
 import { basePath } from "../../services/UrlPaths";
@@ -13,14 +13,15 @@ function PageLogin() {
   });
   const [errorMessage, setErrorMessage] = useState("");
   const [validated, setValidated] = useState(false);
-  const { isLogedIn } = useContext(ContextDatas);
-  const navigate = useNavigate();
+  const { isLogedIn } = useContext(ContextDatas)
+
+
 
   useEffect(() => {
     if (isLogedIn) {
-      navigate(basePath); // Redirect to the base path if already logged in
+      window.location.href = basePath
     }
-  }, [isLogedIn]);
+  }, [])
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -29,6 +30,7 @@ function PageLogin() {
       [name]: value,
     });
   };
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,7 +43,7 @@ function PageLogin() {
     }
 
     try {
-      const response = await fetch("https://your-api-url.com/users"); // Use live URL for production
+      const response = await fetch("http://localhost:5000/users");
       const users = await response.json();
 
       const user = users.find(
@@ -55,11 +57,10 @@ function PageLogin() {
 
         toast.success("Login successful!");
 
-        // Use navigate for redirection instead of window.location.href
         if (user.role === 'admin') {
-          navigate("/rbac/user-list");
+          window.location.href = "user-list";
         } else {
-          navigate("/rbac/welcome");
+          window.location.href = "welcome";
         }
       } else {
         setErrorMessage("Incorrect username or password");
@@ -104,6 +105,7 @@ function PageLogin() {
                               onChange={handleInputChange}
                             />
                             <Form.Control.Feedback type="invalid">Please add username</Form.Control.Feedback>
+
                           </div>
 
                           <div className="form-group">
@@ -118,15 +120,14 @@ function PageLogin() {
                               onChange={handleInputChange}
                             />
                             <Form.Control.Feedback type="invalid">Please add password</Form.Control.Feedback>
+
                           </div>
 
                           <button className="btn btn-primary btn-default btn-squared px-30 w-100 mt-4" type="submit">
                             Sign in
                           </button>
                           {errorMessage && (
-                            <div className="text-danger mt-3 radius-xs b-light" style={{ fontSize: ".875em", color: "#DF060A", border: "none" }}>
-                              {errorMessage}
-                            </div>
+                            <div className="text-danger mt-3 radius-xs b-light" style={{ fontSize: ".875em", color: "#DF060A", border: "none" }}>{errorMessage}</div>
                           )}
                         </Form>
                       </div>
@@ -140,6 +141,7 @@ function PageLogin() {
       </main>
       <ToastContainer />
     </div>
+
   );
 }
 
