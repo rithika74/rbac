@@ -58,9 +58,9 @@ function PageLogin() {
         toast.success("Login successful!");
 
         if (user.role === 'admin') {
-          window.location.href = "/user-list";
+          window.location.href = "/rbac/user-list";
         } else {
-          window.location.href = "/welcome";
+          window.location.href = "/rbac/welcome";
         }
       } else {
         setErrorMessage("Incorrect username or password");

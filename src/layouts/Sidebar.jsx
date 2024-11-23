@@ -37,7 +37,7 @@ function Sidebar() {
             </li>
 
             {role === 'admin' && (
-              <li className={location.pathname.includes("user-list") ? "active" : ""}>
+              <li className={location.pathname.includes("rbac/user-list") ? "active" : ""}>
                 <Link to={basePath + usersPath} onClick={() => handleMenuItemClick(basePath + usersPath)}>
                   <span className="nav-icon uil uil-users-alt" />
                   <span className="menu-text">Users</span>
