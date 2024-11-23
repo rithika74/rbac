@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/login" element={<PageLogin />} />
+        <Route path="login" element={<PageLogin />} />
         <Route path={`${basePath}`} element={<PrivateRoute><RouterConnection /></PrivateRoute>}>
           <Route index path={`${basePath}${welcomePath}`} element={<Welcome />} />
           <Route path={`${basePath}${usersPath}`} element={<UsersList />} />
