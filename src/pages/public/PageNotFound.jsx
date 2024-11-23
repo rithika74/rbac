@@ -7,7 +7,7 @@ function PageNotFound() {
         <div className="col-12">
           <div className="min-vh-100 content-center">
             <div className="error-page text-center">
-              <img src="/img/svg/404.svg" alt={404} className="svg" />
+              {/* <img src="/img/svg/404.svg" alt={404} className="svg" /> */}
               <div className="error-page__title">404</div>
               <h5 className="fw-500">
                 Sorry! the page you are looking for doesn't exist.
