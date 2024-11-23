@@ -13,15 +13,6 @@
       "id": "5"
     },
     {
-      "id": "9",
-      "name": "Isla",
-      "username": "isla",
-      "password": "isla123",
-      "role": "Viewer",
-      "status": "active",
-      "isActive": true
-    },
-    {
       "isActive": false,
       "id": "10"
     },
