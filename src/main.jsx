@@ -5,7 +5,7 @@ import Context from "./services/Context.jsx";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/rbac/">
     <Context>
       <App />
     </Context>
